@@ -1,28 +1,28 @@
-import React, { Component } from 'react'
+import React, { useState, useRef } from 'react'
 
-export default class App extends Component {
+const App = () => {
 
-  constructor() {
-    super()
-    this.state = {
-      counter: 0
-    }
+  const [counter, setCounter] = useState(0)
+  const counterWrapperRef = useRef()
+
+  const handleClick = () => {
+    setCounter(counter + 1)
+    console.log(counterWrapperRef);
   }
 
-  handleClick = () => {
-    this.setState({ counter: this.state.counter + 1 })
-  }
 
-  render() {
-    return (
-      <>
-        <div className="text-center p-5">
-          <div className='text-center m-2'>{this.state.counter} 😃 !!</div>
-          <button
-            onClick={this.handleClick}
-            className="btn btn-success">+</button>
-        </div>
-      </>
-    )
-  }
+  return (
+    <>
+      <div className="text-center p-5">
+        <div
+          ref={counterWrapperRef}
+          className='text-center m-2'>{counter} 😃 !!</div>
+        <button
+          onClick={handleClick}
+          className="btn btn-success">+</button>
+      </div>
+    </>
+  )
 }
+
+export default App
