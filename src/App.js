@@ -1,25 +1,31 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 
 const App = () => {
 
-  const [counter, setCounter] = useState(0)
-  const counterWrapperRef = useRef()
+  const nameRef = useRef("")
 
-  const handleClick = () => {
-    setCounter(counter + 1)
-    console.log(counterWrapperRef);
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    //target the input and get the value 
+    alert(nameRef.current.value)
   }
 
 
   return (
     <>
       <div className="text-center p-5">
-        <div
-          ref={counterWrapperRef}
-          className='text-center m-2'>{counter} 😃 !!</div>
-        <button
-          onClick={handleClick}
-          className="btn btn-success">+</button>
+        <form onSubmit={handleSubmit}>
+          <input 
+            ref={nameRef}
+            type="text"
+            placeholder='Type your name 😃 !!'
+            className='m-1' />
+          <button
+            type='submit'
+            className="btn btn-success">SAVE</button>
+        </form>
+
       </div>
     </>
   )
