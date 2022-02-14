@@ -1,26 +1,24 @@
-import React, { useRef } from 'react'
+import React, { useState } from 'react'
 
 const App = () => {
 
-  const nameRef = useRef("")
-
+  const [name, setName] = useState("")
   const handleSubmit = (e) => {
     e.preventDefault()
-
-    //target the input and get the value 
-    alert(nameRef.current.value)
+    console.log(name)
   }
 
 
   return (
     <>
       <div className="text-center p-5">
+
         <form onSubmit={handleSubmit}>
-          <input 
-            ref={nameRef}
+          <input
             type="text"
             placeholder='Type your name 😃 !!'
-            className='m-1' />
+            className='m-1'
+            onChange={(e) => setName(e.target.value)} />
           <button
             type='submit'
             className="btn btn-success">SAVE</button>
