@@ -2,11 +2,17 @@ import React, { useState } from 'react'
 
 const App = () => {
 
-  const [name, setName] = useState("")
+  const [fname, setFname] = useState("")
+  const [lname, setLname] = useState("")
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(name)
   }
+
+  const handleChangeFname = (e) => setFname(e.target.value)
+
+  const handleChangeLname = (e) => setLname(e.target.value)
+
 
 
   return (
@@ -16,9 +22,19 @@ const App = () => {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder='Type your name 😃 !!'
+            placeholder='Type your firstname 😃 !!'
             className='m-1'
-            onChange={(e) => setName(e.target.value)} />
+            onChange={handleChangeFname} />
+            <br />
+
+          <input
+            type="text"
+            placeholder='Type your lastname 😃 !!'
+            className='m-1'
+            onChange={handleChangeLname} />
+            <br />
+
+
           <button
             type='submit'
             className="btn btn-success">SAVE</button>
