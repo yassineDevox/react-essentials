@@ -1,58 +1,44 @@
-import React, { Component } from "react";
+import { useEffect, useState } from "react";
 
-export default class Child extends Component {
-  constructor() {
-    super();
-    this.state = {
-      counter: 0,
-      isloading: false,
-    };
-    console.log("create App object 😃");
-  }
+export default function Child() {
+  const [counter, setCounter] = useState(0);
+
+  const Decrement = () => setCounter(counter - 1);
+
+  const Increment = () => setCounter(counter + 1);
+
+  //component did mount + component did updated
+  useEffect(() => {
+    console.log("comp did mount + did up");
+  });
 
   //component did mount
-  componentDidMount() {
-    console.log("App Did Mount (fetch api ... ) 😃");
-  }
-
-  handleClickDecrement = () => {
-    this.setState({ counter: this.state.counter - 1 });
-    // console.log("counter changed 🅰️")
-  };
-
-  handleClickIncrement = () => {
-    this.setState({ counter: this.state.counter + 1 });
-    // console.log("counter changed 🅰️")
-  };
-
-  //-------- component did update
-  componentDidUpdate(prevProp, prevState) {
-    console.log(
-      "counter changed from " + prevState.counter + " to " + this.state.counter
-    );
-    // tracki chi state cibler
-    if (prevState.isloading != this.state.isloading) {
-      console.log("isloading changed ");
+  useEffect(() => {
+    console.log("component did mount ");
+    //--will unmount 
+    return ()=>{
+        console.log("see you soon bro 👨‍🦱 !")
     }
-  }
+  }, []);
 
-  //component will unmount
-  componentWillUnmount() {
-    console.log("see you soon broo 😢 !");
-  }
+  //track counter (still have component did mount)
+  useEffect(() => {
+    if (counter != 0) {
+      console.log("counter changed");
+    }
+  }, [counter]);
 
-  render() {
-    let { counter } = this.state;
-    return (
-      <div className="text-center">
-        <button className="btn btn-primary" onClick={this.handleClickDecrement}>
-          -
-        </button>
-        <div>{counter}</div>
-        <button className="btn btn-primary" onClick={this.handleClickIncrement}>
-          +
-        </button>
-      </div>
-    );
-  }
+
+  return (
+    <div className="text-center">
+      <button className="btn btn-primary" 
+      onClick={Decrement}>
+        -
+      </button>
+      <div>{counter}</div>
+      <button className="btn btn-primary" onClick={Increment}>
+        +
+      </button>
+    </div>
+  );
 }
