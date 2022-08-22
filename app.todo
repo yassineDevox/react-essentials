@@ -1,0 +1,24 @@
+✔ Setup Routes @started(22-08-21 00:07) @done(22-08-21 00:13) @lasted(7m)
+Create pages:
+    ✔ ListTodos @started(22-08-21 00:14) @done(22-08-21 00:17) @lasted(3m33s)
+    ✔ AddTodos @started(22-08-21 00:17) @done(22-08-21 00:19) @lasted(2m48s)
+    ✔ EditTodos @started(22-08-21 00:19) @done(22-08-21 00:22) @lasted(3m56s)
+    ✔ TodoDetails @started(22-08-21 00:22) @done(22-08-21 00:25) @lasted(3m39s)
+Create components:
+    ✔ TodoCmp @started(22-08-21 00:28) @done(22-08-21 00:28) @lasted(27s)
+    ✔ TodosCmp @started(22-08-21 02:04) @done(22-08-21 02:21) @lasted(17m20s)
+
+Setup the store of redux toolkit:
+    ✔ create the todoSlice with the store @started(22-08-21 02:26) @done(22-08-21 02:37) @lasted(11m49s)
+    ✔ load todos from redux @started(22-08-21 02:38) @done(22-08-21 14:28) @lasted(11h50m43s)
+
+Api calls :
+    ✔ load list of todos and setup axios @started(22-08-21 14:54) @done(22-08-21 19:00) @lasted(4h6m41s)
+    ✔ error handling @started(22-08-21 19:00) @done(22-08-21 19:45) @lasted(45m15s)
+
+
+Features :
+    ✔ Add new todo @started(22-08-21 23:47) @done(22-08-22 00:08) @lasted(21m24s)
+    ✔ delete an existing todo @started(22-08-22 00:58)@done(22-08-22 01:31) @lasted(33m42s)
+    
+

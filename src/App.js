@@ -1,7 +1,15 @@
 import React from 'react'
+import { Provider } from 'react-redux'
+import { RdxStore } from './app/store'
+import { AppRoutes } from './routes'
 
-export const App = () => {
+const App = () => {
   return (
-    <div>App</div>
+    <Provider store={RdxStore}>
+      <AppRoutes/>
+    </Provider>
+    
   )
 }
+
+export default App
