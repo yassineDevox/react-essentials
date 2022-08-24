@@ -20,5 +20,5 @@ Api calls :
 Features :
     ✔ Add new todo @started(22-08-21 23:47) @done(22-08-22 00:08) @lasted(21m24s)
     ✔ delete an existing todo @started(22-08-22 00:58)@done(22-08-22 01:31) @lasted(33m42s)
-    
+    ✘ edit an existing todo @started(22-08-24 00:01) @cancelled(22-08-24 00:57) @wasted(56m47s)
 

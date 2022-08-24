@@ -42,6 +42,7 @@ const todoSlice = createSlice({
     name: "todo",
     initialState,
     reducers: {
+      
     },  
     extraReducers: {
         [loadTodos.pending]: state => {
@@ -81,6 +82,7 @@ const todoSlice = createSlice({
             state.list = state.list.filter(t=>t.id!==payload)
             state.successMsg=`Task [${payload}] deleted Successfully 😇!`
         },
+       
 
     }
 })
@@ -90,7 +92,7 @@ export const selectTodos = s => s.todo.list
 export const isLoading = s => s.todo.loading
 export const selectErrorMsg = s => s.todo.errorMsg
 export const selectSuccesMsg = s => s.todo.successMsg
-
+export const selectTodoById = (s,id) => s.todo.list.find(t=>t.id===id)  
 
 
 //export red,action

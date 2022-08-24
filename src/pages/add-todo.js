@@ -16,7 +16,6 @@ export const AddPage = () => {
     e.preventDefault()  
     call(saveTodo(new TodoModel(null,val)))
     inputRef.current.value=""
-
   }
   return (
     <>
