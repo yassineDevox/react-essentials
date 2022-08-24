@@ -1,7 +1,12 @@
 import React from 'react'
+import AppRoutes from './routes'
+// import Parent from './components/Parent'
 
-export const App = () => {
+const App = () => {
   return (
-    <div>App</div>
+    // <Parent/>
+    <AppRoutes/>
   )
 }
+
+export default App
