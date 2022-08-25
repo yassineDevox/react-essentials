@@ -1,22 +1,21 @@
 import React, { useState,useEffect } from 'react'
 
-export const App = () => {
+export const App2 = () => {
   const [f1, setF1] = useState("")
   const [f2, setF2] = useState("")
   const [f3, setF3] = useState("")
 
   //effects 
   useEffect(() => {
+    if(f1)
     console.log("f1:",f1)
-  }, [f1])
-  
-  useEffect(() => {
+    if(f2)
     console.log("f2:",f2)
-  }, [f2])
-
-  useEffect(() => {
+    if(f3)
     console.log("f3:",f3)
-  }, [f3])
+  }, [f1,f2,f3])
+  
+  
   
   return (
     <div>App
