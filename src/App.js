@@ -1,11 +1,9 @@
 import React from 'react'
-import AppRoutes from './routes'
-// import Parent from './components/Parent'
+import Pure from './components/Pure'
 
 const App = () => {
   return (
-    // <Parent/>
-    <AppRoutes/>
+   <><Pure/></>
   )
 }
 
