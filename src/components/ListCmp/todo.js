@@ -21,11 +21,15 @@ export const TodoCmp = ({ title, isCompleted,id }) => {
     if (!window.confirm("Are you sure ?")) return
     call(deleteTodo(id))
   } 
-
+ const onTaskCompleted = () => {
+  
+ }
   
   return (
     <li style={styles.todoItem}>
-      <input type="checkbox" style={styles.todoCheck} checked={isCompleted} />
+      <input
+      onChange={onTaskCompleted} 
+      type="checkbox" style={styles.todoCheck} checked={isCompleted} />
       <span style={styles.todoTitle}>{title}</span>
       <button style={styles.delBtn}
         onClick={onTodoDeleted}>DEL </button> 
