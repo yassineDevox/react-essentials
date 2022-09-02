@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from "react"
 import { useDispatch,useSelector } from "react-redux/"
 import { useParams } from "react-router-dom"
 import { editTodo, isLoading, selectErrorMsg, selectSuccesMsg } from "../features/slices/todo"
-import { Loader, Message, TodoModel } from "./list-todo"
-
+import { Loader, Message} from "./list-todo"
+import {TodoModel} from './../models/todo'
 
 export const EditPage = () => {
 
@@ -31,10 +31,10 @@ export const EditPage = () => {
   } 
 
   useEffect(()=>{
-    const updatedTodo = store.todo.list.find(t=>t.id===Number(id)) || {}
-    if(updatedTodo && updatedTodo.title && updatedTodo.completed){
-       inputRef.current.value = updatedTodo.title
-       checkRef.current.checked = updatedTodo.completed
+    const updatedTodo = store.todo.list.find(t=>t.id==Number(id)) || undefined
+    if(updatedTodo){
+      inputRef.current.value = updatedTodo.title
+      checkRef.current.checked = updatedTodo.completed
     }
   },[])
     

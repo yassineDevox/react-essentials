@@ -32,7 +32,7 @@ export const deleteTodo = createAsyncThunk("todo/del", async (payload, { fulfill
 export const editTodo = createAsyncThunk("todo/edit", async (payload, { fulfillWithValue, rejectWithValue }) => {
     try {
         const r = await client.put("/todos/" + payload.id, payload)
-        return fulfillWithValue(payload)
+        return fulfillWithValue(r.data)
     } catch (error) {
         return rejectWithValue(error.data)
     }
@@ -99,7 +99,7 @@ const todoSlice = createSlice({
         },
         [editTodo.fulfilled]: (state, { payload }) => {
             state.loading = false
-            state.list = state.list.map(t => t.id === payload.id ? { ...payload } : t)
+            state.list = state.list.map(t => t.id == payload.id ? { ...payload } : t)
             state.successMsg = `Task [${payload.id}] updated Successfully 😇!`
         },
 

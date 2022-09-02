@@ -3,14 +3,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { TodosCmp } from "../components/ListCmp"
 import { isLoading, loadTodos, selectErrorMsg, selectTodos } from "../features/slices/todo"
 
-export class TodoModel {
-
-  constructor(id, title, completed = false) {
-    this.id = id
-    this.title = title
-    this.completed = completed
-  }
-}
 
 export const Loader = () => <p>loading...</p>
 export const Message = ({content,color="red"}) => <p style={{color,textTransform:"capitalize"}}>{content}</p>
@@ -21,6 +13,7 @@ export const ListPage = () => {
   const loading = useSelector(isLoading)
   const error   = useSelector(selectErrorMsg)
   useEffect(() => {
+    if(todos.length==0)
     call(loadTodos())
   }, [])
 

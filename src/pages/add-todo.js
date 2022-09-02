@@ -1,8 +1,8 @@
 import React, { useRef } from "react"
 import { useDispatch,useSelector } from "react-redux/"
 import { isLoading, saveTodo, selectErrorMsg, selectSuccesMsg } from "../features/slices/todo"
-import { Loader, Message, TodoModel } from "./list-todo"
-
+import { Loader, Message } from "./list-todo"
+import {TodoModel} from './../models/todo'
 
 export const AddPage = () => {
 
