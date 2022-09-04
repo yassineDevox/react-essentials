@@ -12,14 +12,19 @@ export const DetailsPage = () => {
   useEffect(() => {
     settodoDetailed(store.list.find(t => t.id == Number(id)))
   }, [])
-
+  const content = (todo,k) => {
+    if (k == "completed") return todo ? "Done" : "Inprogress"
+    else return todo
+  }
   return (
     <div>
       <h1> DetailsPage of the fucking current todo : {id} </h1>
       <ul>
         {
           todoDetailed && Object.keys(todoDetailed)
-            .map(k => <li> {k} : {todoDetailed[k]} </li>)
+            .map(k => <li> {k} : {
+                content(todoDetailed[k],k)
+            } </li>)
         }
       </ul>
     </div>

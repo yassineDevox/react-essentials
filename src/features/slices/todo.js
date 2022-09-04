@@ -20,18 +20,30 @@ export const saveTodo = createAsyncThunk("todo/save", async (payload, { fulfillW
     }
 })
 
-export const deleteTodo = createAsyncThunk("todo/del", async (payload, { fulfillWithValue, rejectWithValue }) => {
-    try {
-        const r = await client.delete("/todos/" + payload)
-        return fulfillWithValue(payload)
-    } catch (error) {
-        return rejectWithValue(error.data)
-    }
-})
+export const deleteTodo =
+    createAsyncThunk(
+        "todo/del",
+        async (payload,
+            { fulfillWithValue, rejectWithValue }) => {
+            try {
+                const r = await client.delete("/todos/" + payload)
+                return fulfillWithValue(payload)
+            } catch (error) {
+                return rejectWithValue(error.data)
+            }
+        })
 
 export const editTodo = createAsyncThunk("todo/edit", async (payload, { fulfillWithValue, rejectWithValue }) => {
     try {
         const r = await client.put("/todos/" + payload.id, payload)
+        return fulfillWithValue(r.data)
+    } catch (error) {
+        return rejectWithValue(error.data)
+    }
+})
+export const toggleTodo = createAsyncThunk("todo/patch", async (payload, { fulfillWithValue, rejectWithValue }) => {
+    try {
+        const r = await client.patch("/todos/" + payload.id, payload)
         return fulfillWithValue(r.data)
     } catch (error) {
         return rejectWithValue(error.data)
@@ -43,15 +55,18 @@ export const editTodo = createAsyncThunk("todo/edit", async (payload, { fulfillW
 const initialState = {
     list: [],
     loading: false,
-    errorMsg: null,
-    successMsg: null
+    errorMsg: "",
+    successMsg: ""
 }
 
 const todoSlice = createSlice({
     name: "todo",
     initialState,
     reducers: {
-
+        clearMsg: (state) => {
+            state.errorMsg = ""
+            state.successMsg = ""
+        }
     },
     extraReducers: {
         [loadTodos.pending]: state => {
@@ -73,7 +88,6 @@ const todoSlice = createSlice({
             state.errorMsg = payload || "something went wrong 😎 "
         },
         [saveTodo.fulfilled]: (state, { payload }) => {
-            console.log(payload)
             state.loading = false
             state.list.push(payload)
             state.successMsg = `Task [${payload.id}] Added Successfully 😇!`
@@ -102,6 +116,18 @@ const todoSlice = createSlice({
             state.list = state.list.map(t => t.id == payload.id ? { ...payload } : t)
             state.successMsg = `Task [${payload.id}] updated Successfully 😇!`
         },
+        [toggleTodo.pending]: state => {
+            state.loading = true
+        },
+        [toggleTodo.rejected]: (state, { payload }) => {
+            state.loading = false
+            state.errorMsg = payload || "something went wrong 😎 "
+        },
+        [toggleTodo.fulfilled]: (state, { payload }) => {
+            state.loading = false
+            state.list = state.list.map(t => t.id == payload.id ? { ...payload } : t)
+            state.successMsg = `Task [${payload.id}] updated Successfully 😇!`
+        },
 
 
     }
@@ -118,5 +144,5 @@ export const selectSuccesMsg = s => s.todo.successMsg
 //export red,action
 export const todoReducer = todoSlice.reducer
 export const {
-
+    clearMsg
 } = todoSlice.actions
