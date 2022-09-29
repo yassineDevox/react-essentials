@@ -3,11 +3,14 @@ import { useContext } from 'react'
 import { builderContext } from '../context'
 
 const Device = () => {
-  const {device:currentDevice,setDevice} = useContext(builderContext)
+  const {builder:{currentDevice},builder,setBuilder} = useContext(builderContext)
+  const onDeviceChanged = (e)=>{
+    setBuilder({...builder,currentDevice:e.target.value})
+  }
   return <div style={{border:"1px solid green",padding:10,marginBottom:10}}>
-    <select value={currentDevice} onChange={(e)=>setDevice(e.target.value)}>
-      <option value="MOBILE">Run into mobile ... 😎</option>
-      <option value="DESKTOP">Run into desktop ... 🙂</option>
+    <select value={currentDevice} onChange={onDeviceChanged}>
+      <option value="mobile">Run into mobile ... 😎</option>
+      <option value="desktop">Run into desktop ... 🙂</option>
     </select>  
   </div>
 }

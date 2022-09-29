@@ -3,13 +3,20 @@ import React, { useState } from 'react'
 export const builderContext = React.createContext()
 
 export const BuilderProvider = ({ children }) => {
-  const [device, setDevice] = useState('DESKTOP')
-  const [position, setPosition] = useState('top')
+  const [builder, setBuilder] = useState({
+    banner: {
+      mobile: {
+        position: 'top'
+      },
+      desktop: {
+        position: 'center'
+      }
+    },
+    currentDevice: 'desktop'
+  })
 
   return (
-    <builderContext.Provider
-      value={{ device, setDevice, position, setPosition }}
-    >
+    <builderContext.Provider value={{ builder, setBuilder }}>
       {children}
     </builderContext.Provider>
   )

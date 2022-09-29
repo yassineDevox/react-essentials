@@ -1,25 +1,41 @@
 import React from 'react'
 import { useContext } from 'react'
 import { builderContext } from '../context'
-
+const log = m=>console.log(m)
 const Position = () => {
-  const { position: currentPosition, setPosition, device } = useContext(
-    builderContext
-  )
+  log("rendred")
+  const {
+    builder: { currentDevice },
+    builder,
+    setBuilder
+  } = useContext(builderContext)
+
+  const onPositionChanged = (e)=>{
+    setBuilder(b=>{
+      b.banner[currentDevice].position=e.target.value
+      return {...b}
+    })
+  }
+
   return (
     <div style={{ border: '1px solid red', padding: 10 }}>
-      
       {/* for mobile  */}
-      {device === 'MOBILE' && (
-        <select value={currentPosition} onChange={e => setPosition(e.target.value)}>
+      {currentDevice === 'mobile' && (
+        <select
+          value={builder.banner[currentDevice].position}
+          onChange={onPositionChanged}
+        >
           <option value='top'>TOP</option>
           <option value='center'>CENTER</option>
           <option value='bottom'>BOTTOM</option>
         </select>
       )}
       {/* for desktop  */}
-      {device === 'DESKTOP' && (
-        <select value={currentPosition} onChange={e => setPosition(e.target.value)}>
+      {currentDevice === 'desktop' && (
+        <select
+          value={builder.banner[currentDevice].position}
+          onChange={onPositionChanged}
+        >
           <option value='top_l'>TOP_LEFT</option>
           <option value='top'>TOP</option>
           <option value='top_r'>TOP_RIGHT</option>
