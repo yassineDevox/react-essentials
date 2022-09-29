@@ -1,13 +1,14 @@
 import React from 'react'
-import { Provider } from 'react-redux'
-import { RdxStore } from './app/store'
-import { AppRoutes } from './routes'
+import Device from './components/Device'
+import Position from './components/Position'
+import { BuilderProvider } from './context'
 
 const App = () => {
   return (
-    <Provider store={RdxStore}>
-      <AppRoutes/>
-    </Provider>
+    <BuilderProvider>
+      <Device />
+      <Position />
+    </BuilderProvider>
   )
 }
 
