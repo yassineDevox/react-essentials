@@ -19,10 +19,12 @@ export const switchDevice = device=>({
   type:types.SWITCH_DEVICE,
   payload:{device}
 }) 
+
 export const setPosition = pos=>({
   type:types.SET_POSITION,
   payload:{pos}
 }) 
+
 export const builderReducer = (prevState = initialState, { type, payload }) => {
   switch (type) {
     case types.SWITCH_DEVICE : {
@@ -36,7 +38,7 @@ export const builderReducer = (prevState = initialState, { type, payload }) => {
         ...prevState,
         banner:{
           ...prevState.banner,
-          [payload.device]:{
+          [prevState.currentDevice]:{
             position:payload.pos
           }
         }
