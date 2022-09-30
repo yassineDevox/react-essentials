@@ -1,20 +1,17 @@
 import React from 'react'
 import { useContext } from 'react'
 import { builderContext } from '../context'
+import { setPosition } from '../reducers/builder'
 const log = m=>console.log(m)
 const Position = () => {
-  log("rendred")
   const {
-    builder: { currentDevice },
+    builder:{currentDevice},
     builder,
-    setBuilder
+    dispatch
   } = useContext(builderContext)
 
   const onPositionChanged = (e)=>{
-    setBuilder(b=>{
-      b.banner[currentDevice].position=e.target.value
-      return {...b}
-    })
+    dispatch(setPosition(e.target.value))
   }
 
   return (

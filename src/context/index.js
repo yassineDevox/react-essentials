@@ -1,22 +1,14 @@
-import React, { useState } from 'react'
+import React, { useReducer, useState } from 'react'
+import { builderReducer, initialState } from '../reducers/builder'
 
 export const builderContext = React.createContext()
 
 export const BuilderProvider = ({ children }) => {
-  const [builder, setBuilder] = useState({
-    banner: {
-      mobile: {
-        position: 'top'
-      },
-      desktop: {
-        position: 'center'
-      }
-    },
-    currentDevice: 'desktop'
-  })
-
+const [builder, dispatch] = useReducer(builderReducer,initialState)
   return (
-    <builderContext.Provider value={{ builder, setBuilder }}>
+    <builderContext.Provider
+      value={{ builder,dispatch }}
+    >
       {children}
     </builderContext.Provider>
   )
