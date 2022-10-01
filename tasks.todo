@@ -1,0 +1,36 @@
+Mini Project Specification:
+
+    The mini project is about creating a React.js application with a great visual appearance and UX.
+
+    Data should be dummy, however it should be stated (in the source code) which APIs would be needed from the API layer with an expected data structure.
+    The same applies also for actions, an expected API with a data structure should be described (it is enough in the source code).
+
+    There are two sections on one screen — input and result sections.
+
+    `I. Input Section`
+
+    The input section consists of:
+        ☐ Context - a text box for entering a list of strings
+        ☐ Questions - a text box for entering a list of strings, this is the only mandatory value
+        ☐ Companies - a text box for entering a list of strings
+        ☐ Only search website titles - a checkox
+        ☐ Select Market - a list of options
+        ☐ Reset button - to reset the dialog
+        ☐ Search button - to perform the main action
+
+
+
+
+    `II. Result Section`
+
+    The result sections appears below the input section, after firing the Search action. It may take up to one minute to provide results, so a loading spinner 
+    (or similar) should be shown.
+    If there was a result section from a previous Search action run, it should be removed or hidden with another Search action.
+
+    Results are provided in two parts: heatmap and table of signals.
+
+    II.a Heatmap:
+        ☐ A heatmap with a few rows and columns filled with dummy data.
+
+    II.b Table of Signals:
+        ☐ A table with the defined columns and a few rows of dummy data. The table should support pagination.
