@@ -10,9 +10,9 @@ Mini Project Specification:
     `I. Input Section`
 
     The input section consists of:
-        ☐ Context - a text box for entering a list of strings
-        ☐ Questions - a text box for entering a list of strings, this is the only mandatory value
-        ☐ Companies - a text box for entering a list of strings
+        ✔ Context - a text box for entering a list of strings @done(22-10-04 00:20)
+        ✔ Questions - a text box for entering a list of strings, this is the only mandatory value @done(22-10-04 00:20)
+        ✔ Companies - a text box for entering a list of strings @done(22-10-04 00:20)
         ☐ Only search website titles - a checkox
         ☐ Select Market - a list of options
         ☐ Reset button - to reset the dialog
