@@ -1,7 +1,6 @@
 import React from 'react'
+import { SearchForm } from './SearchForm'
 
 export const App = () => {
-  return (
-    <div>App</div>
-  )
+  return <SearchForm />
 }
