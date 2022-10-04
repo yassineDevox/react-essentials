@@ -1,4 +1,6 @@
 import React from 'react'
+import { Checkbox } from '../checkbox'
+import { Select } from '../select'
 import { Input } from './../input/index'
 
 export const SearchForm = () => {
@@ -13,6 +15,8 @@ export const SearchForm = () => {
         placeholder='Enter Domain Here...'
         label='Companies/Websites'
       />
+      <Checkbox label="Only Search Website's titles" />
+      <Select label="Select Market" list={ [ {val:"", name:"--selecteMarket--"} ] } />
     </form>
   )
 }
